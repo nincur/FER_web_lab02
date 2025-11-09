@@ -12,17 +12,16 @@ export async function GET() {
       orderBy: { createdAt: 'desc' },
     })
 
-    // If not vulnerable, exclude sensitive data from response
+    // If not vulnerable, show hashed passwords (not plaintext)
     const sanitizedUsers = users.map((user) => {
       if (isSensitiveDataVulnerable) {
         // VULNERABLE: Return all data including plaintext passwords
         return user
       } else {
-        // SECURE: Exclude password and API key from response
-        const { password, apiKey, ...safeUser } = user
+        // SECURE: Show hashed passwords and hide API keys
+        const { apiKey, ...safeUser } = user
         return {
           ...safeUser,
-          password: '***HIDDEN***',
           apiKey: apiKey ? '***HIDDEN***' : null,
         }
       }
@@ -33,7 +32,7 @@ export async function GET() {
       sensitiveDataVulnerable: isSensitiveDataVulnerable,
       warning: isSensitiveDataVulnerable
         ? 'VULNERABLE: Passwords and API keys are exposed in plaintext!'
-        : 'SECURE: Sensitive data is hidden from API responses',
+        : 'SECURE: Passwords are hashed with bcrypt, API keys are hidden',
     })
   } catch (error) {
     return NextResponse.json(
