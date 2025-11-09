@@ -69,8 +69,8 @@ export default function XSSDemo() {
   }
 
   return (
-    <div className="bg-gray-900 p-6 rounded-lg">
-      <h2 className="text-2xl font-bold text-white mb-4">
+    <div className="bg-gradient-to-br from-slate-800 to-slate-900 p-6 rounded-2xl shadow-xl border border-slate-700">
+      <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent mb-4">
         1. Cross-Site Scripting (XSS) - Stored XSS Demo
       </h2>
 
