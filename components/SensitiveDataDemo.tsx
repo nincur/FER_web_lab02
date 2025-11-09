@@ -214,28 +214,6 @@ export default function SensitiveDataDemo() {
           </table>
         </div>
       </div>
-
-      <div className="mt-4 bg-yellow-900 text-yellow-100 p-4 rounded">
-        <h4 className="font-semibold mb-2">Attack Demonstration:</h4>
-        <ul className="list-disc list-inside space-y-1 text-sm">
-          <li>
-            When VULNERABLE: Passwords stored in plaintext, visible in database
-            and API
-          </li>
-          <li>When SECURE: Passwords hashed with bcrypt, hidden from API</li>
-          <li>
-            VULNERABLE mode exposes: plaintext passwords, API keys, sensitive
-            user data
-          </li>
-          <li>
-            Real impact: Account takeover, credential stuffing, data breaches
-          </li>
-          <li>
-            Compliance violations: GDPR, PCI-DSS, HIPAA all require secure data
-            storage
-          </li>
-        </ul>
-      </div>
     </div>
   )
 }
