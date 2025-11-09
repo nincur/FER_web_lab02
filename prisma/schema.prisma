@@ -1,0 +1,35 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique
+  email     String   @unique
+  password  String   // Will store plaintext when vulnerable, hashed when secure
+  role      String   @default("user")
+  apiKey    String?  // Additional sensitive data
+  createdAt DateTime @default(now())
+}
+
+model Message {
+  id        Int      @id @default(autoincrement())
+  content   String   // Will store unsanitized content when vulnerable
+  author    String
+  createdAt DateTime @default(now())
+}
+
+model VulnerabilityToggle {
+  id                      Int     @id @default(autoincrement())
+  xssVulnerable           Boolean @default(true)
+  sensitiveDataVulnerable Boolean @default(true)
+  updatedAt               DateTime @updatedAt
+}
