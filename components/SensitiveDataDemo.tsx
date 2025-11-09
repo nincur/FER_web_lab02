@@ -66,8 +66,8 @@ export default function SensitiveDataDemo() {
       )
     }
 
-    // Refresh user list
-    setTimeout(fetchUsers, 500)
+    // Refresh user list immediately
+    await fetchUsers()
   }
 
   const handleCreateUser = async (e: React.FormEvent) => {

@@ -47,6 +47,8 @@ export default function XSSDemo() {
         ? 'XSS vulnerability ENABLED - Messages will NOT be sanitized'
         : 'XSS vulnerability DISABLED - Messages will be sanitized'
     )
+    // Refresh messages to update UI
+    await fetchMessages()
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
